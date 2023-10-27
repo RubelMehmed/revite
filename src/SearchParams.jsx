@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Results from "./Results";
+import { useContext, useState } from "react";
 import AdoptedPetContext from "./AdoptedPetContext";
-import useBreedList from "./useBreedList";
 import fetchSearch from "./fetchSearch";
+import Results from "./Results";
+import useBreedList from "./useBreedList";
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 
 const SearchParams = () => {
@@ -20,8 +20,9 @@ const SearchParams = () => {
   const pets = results?.data?.pets ?? [];
 
   return (
-    <div className="search-params">
+    <div className="my-0 mx-auto w-11/12">
       <form
+        className="p-10 mb-10 rounded-lg bg-gray-200 shadow-lg flex flex-col items-center justify-center"
         onSubmit={(e) => {
           e.preventDefault();
           const formData = new FormData(e.target);
@@ -40,7 +41,12 @@ const SearchParams = () => {
         ) : null}
         <label htmlFor="location">
           Location
-          <input id="location" name="location" placeholder="Location" />
+          <input 
+            type="text"
+            id="location"
+            name="location"
+            className="mb-5 block w-60"
+            placeholder="Location" />
         </label>
 
         <label htmlFor="animal">
@@ -48,6 +54,7 @@ const SearchParams = () => {
           <select
             id="animal"
             name="animal"
+            className="mb-5 block w-60"
             onChange={(e) => {
               setAnimal(e.target.value);
             }}
@@ -66,17 +73,24 @@ const SearchParams = () => {
 
         <label htmlFor="breed">
           Breed
-          <select disabled={!breeds.length} id="breed" name="breed">
+          <select 
+            id="breed" name="breed"
+            className="mb-5 block w-60 disabled: opacity-50"
+            disabled={!breeds.length}
+            >
             <option />
             {breeds.map((breed) => (
-              <option key={breed} value={breed}>
+              <option 
+                key={breed}
+                value={breed}
+              >
                 {breed}
               </option>
             ))}
           </select>
         </label>
 
-        <button>Submit</button>
+        <button className="rounded border-none bg-orange-500 px-6 py-2 text-white hover:opacity-50">Submit</button>
       </form>
       <Results pets={pets} />
     </div>
