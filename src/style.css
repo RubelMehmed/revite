@@ -1,4 +1,8 @@
-* {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* * {
   box-sizing: border-box;
   color: #333;
 }
@@ -363,4 +367,4 @@ form .pet {
 
 .mini .loader {
   font-size: 34px;
-}
+} */
