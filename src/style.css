@@ -1,6 +1,27 @@
+@config "./tailwind.config.js";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "Comic Sans MS", "Helvetica Neue", sans-serif;
+  }
+}
+
+@layer components {
+  .search-input {
+    @apply w-60 mb-5 block;
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  }
+}
+
+@layer utilities {
+  .grayed-out-diabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+}
 
 /* * {
   box-sizing: border-box;
