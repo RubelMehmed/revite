@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import AdoptedPetContext from "./AdoptedPetContext";
 import Details from "./Details";
 import SearchParams from "./SearchParams";
@@ -24,7 +23,6 @@ const App = () => {
         background: "url(http://pets-images.dev-apis.com/pets/wallpaperA.jpg)",
         }}
     >
-    <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <AdoptedPetContext.Provider value={adoptedPet}>
           <header className="w-full mb-10 text-center p-7 bg-gradient-to-b from-yellow-400 via-orange-600 too-red-500">
@@ -36,11 +34,13 @@ const App = () => {
           </Routes>
         </AdoptedPetContext.Provider>
       </QueryClientProvider>
-    </BrowserRouter>
     </div>
   );
 };
 
-const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(<App />);
+
+export default App;
+
+// const container = document.getElementById("root");
+// const root = createRoot(container);
+// root.render(<App />);
